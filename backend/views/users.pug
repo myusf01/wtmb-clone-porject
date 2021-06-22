@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1 This is User Page
+    each user in users
+        p #{user.username}
+    pre #{JSON.stringify(users, null, 4)}
+
+    //- each tweet in userTweets
+    //-     h5 #{user.username} once said:
+    //-     p  #{tweet.text}

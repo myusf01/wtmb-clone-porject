@@ -1,0 +1,9 @@
+:root {
+    --c-gray: #6e767d;
+    --c-primary: #000;
+    --c-primary-whiter: #fff;
+    --c-text-color: #000;
+    --c-border-color: #2f3336;
+    --c-dark-gray: #202327;
+    --fade: 120ms;
+  }

@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h2 #{tweet.user.username} says; 
+    p #{tweet.text}
+    p #{tweet.likes.length} likes
+    pre #{JSON.stringify(tweet, null, 4)}
+
+    //- each like in tweet.likes
+    //-     p #{like._id}
+

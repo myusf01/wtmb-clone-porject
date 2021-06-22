@@ -1,0 +1,9 @@
+extends layout
+
+block content
+
+    each tweet in tweets
+            h2 #{tweet.user.username} says; 
+            p #{tweet.text}
+            p #{tweet.likes.length} likes
+            pre #{JSON.stringify(tweet, null, 4)}
