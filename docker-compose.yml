@@ -1,0 +1,25 @@
+version: '3'
+services:
+  backend:
+    build: backend
+    environment:
+      MONGODB_CONNECTION_STRING: 'mongodb+srv://twtDB:dRdLt6B9PGbw4cV4@my-wtmb.sqa0c.mongodb.net/my-wtmb?retryWrites=true&w=majority'
+      PORT: '3000'
+
+    ports:
+      - 3000:3000
+  frontend:
+    build: frontend
+    environment:
+      VUE_APP_API_URL: 'http://localhost:3000'
+      PORT: '8080'
+    ports:
+      - 8080:8080
+  mongodb:
+    image: mongo:4.2
+    ports:
+      - 27017:27017
+volumes: 
+  
+
+
