@@ -1,6 +1,6 @@
 <template>
   <div class="tweetComposer">
-    <ProfilePhoto class="photo" :size="48" :src="`https://picsum.photos/50?random=60c1c48763262f1f1c7d8c6e`"/>
+    <ProfilePhoto class="photo" :size="48" :src="`https://picsum.photos/50?random=${user._id}`"/>
 
     <div class="composeArea">
       <form @submit="sendTweet($data)">
@@ -64,10 +64,12 @@ export default {
   data: function(){
     return {
       tweetText: ''
+
     }
   },
   computed:{
-    ...mapState(['tweets'])
+    ...mapState(['tweets','user']),
+
   },
   methods:{
     ...mapActions(['sendTweet','fetchTweets'])

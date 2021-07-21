@@ -12,6 +12,7 @@ services:
     build: frontend
     environment:
       VUE_APP_API_URL: 'http://localhost:3000'
+      CREATE_RANDOM_USER: 'https://randomuser.me/api/?nat=tr&inc=name'
       PORT: '8080'
     ports:
       - 8080:8080
@@ -19,7 +20,3 @@ services:
     image: mongo:4.2
     ports:
       - 27017:27017
-volumes: 
-  
-
-

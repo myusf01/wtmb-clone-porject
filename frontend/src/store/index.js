@@ -28,24 +28,28 @@ export default new Vuex.Store({
       commit('SET_TWEETS', result.data.reverse())
     },
 
-    async sendTweet({ commit }, tweet) {
+    async sendTweet({ commit }, data) {
+      console.log("boook");
+      console.log(data.user);
       await axios
         .post(
-          `${process.env.VUE_APP_API_URL}/tweet/60c1c48763262f1f1c7d8c6e` ||
-            `http://localhost:3000/tweet/60c1c48763262f1f1c7d8c6e`,
+          `http://localhost:3000/tweet/${this.state.user._id}`,
           {
-            tweet: tweet.tweetText
+            tweet: data.tweetText
           }
         )
-        .then(this.fetchTweets())
-      commit('POST_TWEET', tweet.tweetText)
+        
+      commit('POST_TWEET', data.tweetText)
     },
 
-    createUser(getInfo,{commit}) {
-      const userInfo = getInfo
-      console.log("getinfo:",userInfo);
+     async createUser({commit}) {
+      const randomUser = await (await axios.get(`https://randomuser.me/api/?nat=tr&inc=name`)).data.results[0].name
+      const name = randomUser.first + " "+ randomUser.last
+      const username = randomUser.last+randomUser.first.toUpperCase()
+      const createUser = await axios.post('http://localhost:3000/user/',{name:name,username:username})
 
-      commit('POST_USER', userInfo.name)
+      commit('POST_USER',createUser.data)
+      
 
     }
   },

@@ -3,8 +3,8 @@
     <div class="pic"><ProfilePic :size="40" :src="img_src"/></div>
 
     <div class="user-info">
-      <CustomText id="name" class="bold">Muhammed Yusuf</CustomText>
-      <CustomText id="slug">@myusf_0</CustomText>
+      <CustomText id="name" class="bold">{{user.name}}</CustomText>
+      <CustomText id="slug">@{{user.username}}</CustomText>
     </div>
     <div class="options-icon"><IconMoreOpt /></div>
   </div>
@@ -14,6 +14,7 @@
 import CustomText from './CustomText.vue'
 import ProfilePic from './ProfilePhoto.vue'
 import IconMoreOpt from '@/icons/common/more-opt.svg'
+import { mapState } from 'vuex'
 export default {
   name: 'account_info',
   components: {
@@ -25,6 +26,9 @@ export default {
     img_src:{
       type: String
     }
+  },
+  computed:{
+    ...mapState(['user'])
   }
 }
 </script>
