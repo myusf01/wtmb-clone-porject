@@ -24,7 +24,7 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchTweets({ commit }) {
-      const result = await axios.get('http://localhost:3000/tweet/all/json')
+      const result = await axios.get(`${process.env.VUE_APP_API_URL}/tweet/all/json`)
       commit('SET_TWEETS', result.data.reverse())
     },
 
@@ -33,7 +33,7 @@ export default new Vuex.Store({
       console.log(data.user);
       await axios
         .post(
-          `http://localhost:3000/tweet/${this.state.user._id}`,
+          `${process.env.VUE_APP_API_URL}/tweet/${this.state.user._id}`,
           {
             tweet: data.tweetText
           }
@@ -43,10 +43,10 @@ export default new Vuex.Store({
     },
 
      async createUser({commit}) {
-      const randomUser = await (await axios.get(`https://randomuser.me/api/?nat=tr&inc=name`)).data.results[0].name
+      const randomUser = await (await axios.get('https://randomuser.me/api/?nat=tr&inc=name')).data.results[0].name
       const name = randomUser.first + " "+ randomUser.last
       const username = randomUser.last+randomUser.first.toUpperCase()
-      const createUser = await axios.post('http://localhost:3000/user/',{name:name,username:username})
+      const createUser = await axios.post(`${process.env.VUE_APP_API_URL}/user/`,{name:name,username:username})
 
       commit('POST_USER',createUser.data)
       
