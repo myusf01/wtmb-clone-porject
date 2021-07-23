@@ -1,6 +1,6 @@
 <template>
   <div class="contentContainer">
-    <Page :PageName="PageName" :ContentName="ContentName">
+    <Page :PageName="PageName" :ContentName="ContentName" @load.once="createUser">
 
       <slot />
     </Page>
@@ -29,9 +29,6 @@ export default {
   },
   methods: {
     ...mapActions(['createUser'])
-  },
-  created(){
-    this.createUser()
   }
 }
 </script>

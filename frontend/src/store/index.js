@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex)
 
@@ -11,6 +12,10 @@ export default new Vuex.Store({
     tweet2send: '',
     user:{}
   },
+  plugins: [createPersistedState({
+    key: 'user'
+  })],
+
   mutations: {
     SET_TWEETS(state, data) {
       state.tweets = data

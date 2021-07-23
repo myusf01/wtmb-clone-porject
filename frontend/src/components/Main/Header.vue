@@ -80,7 +80,7 @@
           </div>
         </router-link>
         <!-- POPUP -->
-        <router-link>
+        <router-link to="/">
           <div class="itemContainer">
             <span class="icon"><IconMore /></span>
             <CustomText class="large bold header-text">More</CustomText>
