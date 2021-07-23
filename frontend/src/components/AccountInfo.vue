@@ -28,7 +28,9 @@ export default {
     }
   },
   computed:{
-    ...mapState(['user'])
+    ...mapState({
+      user: state=> state.userInfo.user
+    })
   }
 }
 </script>

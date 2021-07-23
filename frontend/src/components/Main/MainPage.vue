@@ -1,7 +1,6 @@
 <template>
   <div class="contentContainer">
-    <Page :PageName="PageName" :ContentName="ContentName" @load.once="createUser">
-
+    <Page :PageName="PageName" :ContentName="ContentName">
       <slot />
     </Page>
 
@@ -10,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions, } from 'vuex'
+import { mapState,mapActions } from 'vuex'
 import Page from './Page.vue'
 import Widgets from './Widgets.vue'
 export default {
@@ -26,6 +25,12 @@ export default {
   components: {
     Widgets,
     Page
+  },
+
+  computed: {
+    ...mapState({
+      user: state => state.userInfo.user
+    })
   },
   methods: {
     ...mapActions(['createUser'])

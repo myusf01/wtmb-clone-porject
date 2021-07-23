@@ -5,9 +5,10 @@ services:
     environment:
       MONGODB_CONNECTION_STRING: 'mongodb://host.docker.internal:27017/twt_clone'
       PORT: '3000'
-
     ports:
       - 3000:3000
+    volumes: 
+      - ./backend:/backend
   frontend:
     build: ./frontend
     environment:
@@ -16,6 +17,9 @@ services:
       PORT: '8080'
     ports:
       - 8080:8080
+    volumes: 
+      - ./frontend:/frontend
+
   mongodb:
     image: mongo:4.2
     ports:

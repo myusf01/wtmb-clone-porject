@@ -68,7 +68,10 @@ export default {
     }
   },
   computed:{
-    ...mapState(['tweets','user']),
+    ...mapState({
+      tweets: state => state.tweets,
+      user: state => state.userInfo.user
+    }),
 
   },
   methods:{

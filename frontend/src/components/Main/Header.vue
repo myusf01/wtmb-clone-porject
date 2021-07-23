@@ -86,7 +86,9 @@
             <CustomText class="large bold header-text">More</CustomText>
           </div>
         </router-link>
-        <router-link to="/profile"> <account-info :img_src="`https://picsum.photos/50?random=${user._id}`"/></router-link>
+        <router-link to="/profile">
+          <account-info :img_src="`https://picsum.photos/50?random=${user._id}`"
+        /></router-link>
         <!-- <accountInfo to="/profile"></accountInfo> -->
       </nav>
     </div>
@@ -143,8 +145,10 @@ export default {
     IconMore,
     IconTwitter
   },
-  computed:{
-    ...mapState(['user'])
+  computed: {
+    ...mapState({
+      user: state => state.userInfo.user
+    })
   }
 }
 </script>
@@ -290,5 +294,5 @@ export default {
 }
 </style>
 
-// TODO: // Try to show-hide mobile icons with vue-if tags.
-// TODO: // Add notification dot and counter.
+// TODO: // Try to show-hide mobile icons with vue-if tags. // TODO: // Add
+notification dot and counter.
