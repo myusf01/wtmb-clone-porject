@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapState,mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Page from './Page.vue'
 import Widgets from './Widgets.vue'
 export default {
@@ -26,14 +26,16 @@ export default {
     Widgets,
     Page
   },
-
-  computed: {
-    ...mapState({
-      user: state => state.userInfo.user
-    })
-  },
   methods: {
     ...mapActions(['createUser'])
+  },
+  computed: {
+    ...mapGetters(['activeUser'])
+  },
+  created() {
+    if(this.activeUser === null){
+      this.createUser()
+    }
   }
 }
 </script>

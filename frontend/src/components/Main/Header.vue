@@ -87,7 +87,7 @@
           </div>
         </router-link>
         <router-link to="/profile">
-          <account-info :img_src="`https://picsum.photos/50?random=${user._id}`"
+          <account-info :img_src="`https://picsum.photos/50?random=${activeUser._id}`"
         /></router-link>
         <!-- <accountInfo to="/profile"></accountInfo> -->
       </nav>
@@ -117,7 +117,7 @@ import IconSearchFill from '@/icons/common/search-fill.svg'
 
 import accountInfo from '../AccountInfo.vue'
 import CustomText from '../CustomText.vue'
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 // import Container from './Container.vue'
 
@@ -146,9 +146,7 @@ export default {
     IconTwitter
   },
   computed: {
-    ...mapState({
-      user: state => state.userInfo.user
-    })
+    ...mapGetters(["activeUser"])
   }
 }
 </script>

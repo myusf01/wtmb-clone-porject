@@ -1,10 +1,14 @@
 import axios from 'axios'
 
 //store
-const state = () => ({
-  user: {}
-})
+const state = {
+  user: null
+}
+// getters
 
+const getters = {
+  activeUser: state => state.user
+}
 //actions
 const actions = {
   async createUser({ commit }) {
@@ -13,26 +17,30 @@ const actions = {
     ).data.results[0].name
     const name = randomUser.first + ' ' + randomUser.last
     const username = randomUser.last + randomUser.first.toUpperCase()
-    const createUser = await axios.post(
+    const newUser = await axios.post(
       `${process.env.VUE_APP_API_URL}/user/`,
       { name: name, username: username }
     )
-    console.log(createUser)
-    commit('POST_USER', createUser.data)
+    commit('NEW_USER', newUser.data)
+  },
+
+  checkUserInfo(){
+    if (this.state.user !== null) return true
+    return false
   }
 }
+
+
 
 // mutations
 
 const mutations = {
-  POST_USER(state, data) {
-    state.user = data
-  }
+  NEW_USER: (state, data) => (state.user = data)
 }
 
 export default {
-  namespaced: true,
   state,
   actions,
-  mutations
+  mutations,
+  getters
 }

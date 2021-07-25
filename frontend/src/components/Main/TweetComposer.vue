@@ -1,15 +1,15 @@
 <template>
   <div class="tweetComposer">
-    <ProfilePhoto class="photo" :size="48" :src="`https://picsum.photos/50?random=${user._id}`"/>
+    <ProfilePhoto class="photo" :size="48" :src="`https://picsum.photos/50?random=${activeUser._id}`"/>
 
     <div class="composeArea">
-      <form @submit="sendTweet($data)">
+      <form @submit="sendTweet(tweet)">
         <div class="textEditor">
           <textarea
             type="text"
             id="tweetText"
             name="tweetText"
-            v-model="tweetText"
+            v-model="tweet"
             placeholder="Neler oluyor hayatta?"
             rows="1"
             required
@@ -48,7 +48,7 @@ import IconGif from '@/icons/editor/gif.svg'
 import IconPoll from '@/icons/editor/poll.svg'
 import IconSchedule from '@/icons/editor/schedule.svg'
 import TwButton from './TwButton.vue'
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 export default {
   name: 'Composer',
 
@@ -63,15 +63,13 @@ export default {
   },
   data: function(){
     return {
-      tweetText: ''
+      tweet: ''
 
     }
   },
   computed:{
-    ...mapState({
-      tweets: state => state.tweets,
-      user: state => state.userInfo.user
-    }),
+    ...mapState(['tweets']),
+    ...mapGetters(['activeUser'])
 
   },
   methods:{

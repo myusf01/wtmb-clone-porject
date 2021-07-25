@@ -1,10 +1,10 @@
 <template>
   <div class="account">
-    <div class="pic"><ProfilePic :size="40" :src="img_src"/></div>
+    <div class="pic"><ProfilePic :size="40" :src="img_src" /></div>
 
     <div class="user-info">
-      <CustomText id="name" class="bold">{{user.name}}</CustomText>
-      <CustomText id="slug">@{{user.username}}</CustomText>
+      <CustomText id="name" class="bold">{{ activeUser.name }}</CustomText>
+      <CustomText id="slug">@{{ activeUser.username }}</CustomText>
     </div>
     <div class="options-icon"><IconMoreOpt /></div>
   </div>
@@ -14,7 +14,7 @@
 import CustomText from './CustomText.vue'
 import ProfilePic from './ProfilePhoto.vue'
 import IconMoreOpt from '@/icons/common/more-opt.svg'
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'account_info',
   components: {
@@ -22,15 +22,13 @@ export default {
     CustomText,
     IconMoreOpt
   },
-  props:{
-    img_src:{
+  props: {
+    img_src: {
       type: String
     }
   },
-  computed:{
-    ...mapState({
-      user: state=> state.userInfo.user
-    })
+  computed: {
+    ...mapGetters(['activeUser'])
   }
 }
 </script>
@@ -76,5 +74,4 @@ export default {
 span {
   display: inline-block;
 }
-
 </style>
