@@ -2,20 +2,25 @@
   <div class="tweet">
     <article>
       <div class="photo">
-        <ProfilePhoto :size="48" :src="`https://picsum.photos/50?random=${tweet.user._id}`"/>
+        <ProfilePhoto
+          :size="48"
+          :src="`https://picsum.photos/50?random=${tweet.user._id}`"
+        />
       </div>
       <div class="tweetContainer">
         <div class="tweetHeader">
           <div class="authorInfo">
-            <CustomText class="name bold">{{tweet.user.name}}</CustomText>
-            <CustomText class="slug">@{{tweet.user.username}}</CustomText>
+            <CustomText class="name bold">{{ tweet.user.name }}</CustomText>
+            <CustomText class="slug">@{{ tweet.user.username }}</CustomText>
             <CustomText>·</CustomText>
-            <CustomText class="time">35m</CustomText>
+            <CustomText class="time">{{
+              cDate(tweet.createdAt)
+            }}</CustomText>
           </div>
           <IconMoreOpt class="more-icon" />
         </div>
         <div class="tweetContent">
-          <CustomText>{{tweet.text}}</CustomText>
+          <CustomText>{{ tweet.text }}</CustomText>
         </div>
         <div class="tweetFooter">
           <IconReply />
@@ -45,6 +50,9 @@ import IconUnliked from '@/icons/tweet/unliked.svg'
 import IconLiked from '@/icons/tweet/liked.svg'
 import IconReply from '@/icons/tweet/reply.svg'
 import IconShare from '@/icons/tweet/share.svg'
+import dayjs from 'dayjs'
+import relativeTime from "dayjs/plugin/relativeTime";
+
 
 export default {
   name: 'MainTweet',
@@ -64,6 +72,13 @@ export default {
   data: function() {
     return {
       iconClicked: false
+    }
+  },
+  methods: {
+    cDate: function(tweetDate) {
+      dayjs.extend(relativeTime)
+      if (tweetDate === undefined) return dayjs().fromNow()
+      return dayjs(tweetDate).fromNow()
     }
   }
 }
@@ -126,5 +141,3 @@ svg {
   height: 18px;
 }
 </style>
-
-
