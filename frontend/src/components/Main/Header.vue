@@ -70,7 +70,7 @@
             <CustomText class="large bold header-text">Lists</CustomText>
           </div>
         </router-link>
-        <router-link to="/profile">
+        <router-link :to="`/profile/${activeUser._id}`">
           <div class="itemContainer">
             <span class="icon">
               <IconProfileFill v-if="$route.name === 'Profile'" />
@@ -86,7 +86,7 @@
             <CustomText class="large bold header-text">More</CustomText>
           </div>
         </router-link>
-        <router-link to="/profile">
+        <router-link :to="`/profile/${activeUser._id}`">
           <account-info :img_src="`https://picsum.photos/50?random=${activeUser._id}`"
         /></router-link>
         <!-- <accountInfo to="/profile"></accountInfo> -->

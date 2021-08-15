@@ -23,7 +23,7 @@ export default {
     ...mapActions(['fetchUser'])
   },
   created() {
-    this.fetchUser()
+    this.fetchUser(this.$route.params.id)
   }
 }
 </script>

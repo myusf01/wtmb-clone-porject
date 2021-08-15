@@ -2,8 +2,7 @@ import axios from 'axios'
 
 const state = {
   tweets: [],
-  newTweet: '',
-  theUser: {}
+  newTweet: ''
 }
 const getters = {
   tweets: state => state.tweets
@@ -26,14 +25,13 @@ const actions = {
 
     commit('POST_TWEET', data)
   },
-  async fetchUser({ commit }) {
-    const userID = this.state.userInfo.user._id
-
+  async fetchUser({ commit },id) {
+    const userID = id
+    console.log(id);
     const result = await axios.get(
       `${process.env.VUE_APP_API_URL}/user/${userID}/json`
     )
     
-    commit('SET_USER', result.data)
     commit('SET_TWEETS', result.data.tweets.reverse())
 
   }

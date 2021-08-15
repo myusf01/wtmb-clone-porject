@@ -1,6 +1,7 @@
 <template>
   <div class="tweet">
     <article>
+      <router-link :to="`/profile/${tweet.user._id}`"></router-link>
       <div class="photo">
         <ProfilePhoto
           :size="48"
@@ -10,12 +11,12 @@
       <div class="tweetContainer">
         <div class="tweetHeader">
           <div class="authorInfo">
-            <CustomText class="name bold">{{ tweet.user.name }}</CustomText>
-            <CustomText class="slug">@{{ tweet.user.username }}</CustomText>
-            <CustomText>·</CustomText>
-            <CustomText class="time">{{
-              cDate(tweet.createdAt)
-            }}</CustomText>
+            <router-link :to="`/profile/${tweet.user._id}`">
+              <CustomText class="name bold">{{ tweet.user.name }}</CustomText>
+              <CustomText class="slug">@{{ tweet.user.username }}</CustomText>
+              <CustomText>·</CustomText>
+              <CustomText class="time">{{ cDate(tweet.createdAt) }}</CustomText>
+            </router-link>
           </div>
           <IconMoreOpt class="more-icon" />
         </div>
@@ -51,8 +52,7 @@ import IconLiked from '@/icons/tweet/liked.svg'
 import IconReply from '@/icons/tweet/reply.svg'
 import IconShare from '@/icons/tweet/share.svg'
 import dayjs from 'dayjs'
-import relativeTime from "dayjs/plugin/relativeTime";
-
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 export default {
   name: 'MainTweet',
