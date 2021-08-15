@@ -7,7 +7,7 @@ const TweetSchema = new mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'User',
       autopopulate: {
-        maxDepth: 1
+        maxDepth: 2
       }
     },
     likes: [
@@ -15,7 +15,7 @@ const TweetSchema = new mongoose.Schema(
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Like',
         autopopulate: {
-          maxDepth: 1
+          maxDepth: 2
         }
       }
     ],
@@ -24,7 +24,7 @@ const TweetSchema = new mongoose.Schema(
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'User',
         autopopulate: {
-          maxDepth: 1
+          maxDepth: 2
         }
       }
     ]

@@ -10,8 +10,8 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import Page from './Page.vue'
-import Widgets from './Widgets.vue'
+import Page from '@/components/Main/Page.vue'
+import Widgets from '@/components/Main/Widgets.vue'
 export default {
   name: 'MainPage',
   props: {

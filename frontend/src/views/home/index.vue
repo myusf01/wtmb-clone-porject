@@ -4,7 +4,7 @@
 
 <script>
 
-import homeTimelineVue from '@/components/Home/Timeline.vue'
+import homeTimelineVue from './timeline/index.vue'
 export default {
   name: 'Home',
   components: {

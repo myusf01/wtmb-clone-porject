@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MainPage from '@/components/Main/MainPage.vue'
+import MainPage from '../main/index.vue'
 import CustomText from '@/components/CustomText.vue'
 export default {
   name: 'Explore',

@@ -6,7 +6,7 @@
 
 <script>
 import CustomText from '@/components/CustomText'
-import MainPage from '@/components/Main/MainPage.vue'
+import MainPage from '../main/index.vue'
 export default {
   name: 'Notifications',
   components: {

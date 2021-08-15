@@ -2,8 +2,7 @@ import axios from 'axios'
 
 //store
 const state = {
-  user: null
-}
+  user: null}
 // getters
 
 const getters = {
@@ -27,7 +26,8 @@ const actions = {
   checkUserInfo(){
     if (this.state.user !== null) return true
     return false
-  }
+  },
+
 }
 
 

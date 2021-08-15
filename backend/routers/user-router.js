@@ -12,6 +12,7 @@ router.get('/all', async (req, res) => {
     users
   })
 })
+
 router.get('/all/json', async (req, res) => {
   const users = await UserService.findAll()
   res.send(users)
@@ -38,6 +39,16 @@ router.get('/:id/json', async (req, res) => {
 
   await res.send(user)
 })
+
+// get a user's all tweets
+router.get('/:id/tweets', async (req, res) => {
+  const id = req.params.id
+  const userTweets = await TweetService.findItem(id)
+  if (!userTweets) res.status(404)
+
+  await res.send(userTweets)
+})
+
 
 // Create new user
 router.post('/', async (req, res) => {

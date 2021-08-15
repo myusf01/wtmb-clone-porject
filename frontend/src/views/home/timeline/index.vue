@@ -6,10 +6,11 @@
 </template>
 
 <script>
+
 import { mapGetters, mapActions } from 'vuex'
-import MainPage from '../Main/MainPage.vue'
-import Tweet from '../Main/Tweet.vue'
-import TweetComposer from '../Main/TweetComposer.vue'
+import MainPage from '../../main/index.vue'
+import Tweet from '@/components/Main/Tweet.vue'
+import TweetComposer from '@/components/Main/TweetComposer.vue'
 
 export default {
   name: 'timeline',
